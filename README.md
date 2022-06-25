@@ -6,3 +6,7 @@ Just what it says. [GICR](http://www.webcorpora.ru/) is a Russian Internet megac
 Dependencies:
 
     pip install python-docx
+    pip install pandas
+    pip install openpyxl
+    
+Supposedly should work fine both with version 1.0 and 2.0 (as long as the table has columns *left*, *result* and *right*). 
