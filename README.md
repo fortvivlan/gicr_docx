@@ -10,3 +10,5 @@ Dependencies:
     pip install openpyxl
     
 Supposedly should work fine both with version 1.0 and 2.0 (as long as the table has columns *left*, *result* and *right*). 
+
+Place your snippets in the data folder and get them back in .docx format from docs folder.
