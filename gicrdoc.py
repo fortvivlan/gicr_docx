@@ -25,7 +25,7 @@ if not os.path.exists('docs'):
 
 if not os.path.exists('data'):
     os.mkdir('data')
-    print('Put your xslx files into data folder')
+    print('Put your xslx or txt with tab-separated snippets into data folder')
     sys.exit()
 
 files = os.listdir('data')
@@ -35,3 +35,7 @@ for name in files:
         data = pd.read_excel(f'data/{name}')
         data = data.drop_duplicates(subset='left', keep='first')
         docwrite(data, name[:-5])
+    elif name.endswith('.txt'):
+        data = pd.read_csv(f'data/{name}', delimiter='\t', header=0, index_col='int_id', quoting=3, on_bad_lines='warn')
+        data = data.drop_duplicates(subset='left', keep='first')
+        docwrite(data, name[:-4])

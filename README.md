@@ -12,3 +12,7 @@ Dependencies:
 Supposedly should work fine both with version 1.0 and 2.0 (as long as the table has columns *left*, *result* and *right*). 
 
 Place your snippets in the data folder and get them back in .docx format from docs folder.
+
+Updates
+
+Version 1.5: you can convert your tsvs now too! Just put them in the folder.
