@@ -6,6 +6,10 @@ from docx import Document
 
 def docwrite(data, name):
     doc = Document()
+    if 'year' in data.columns and 'birth' in data.columns and 'loc' in data.columns:
+        cat = 'lj'
+    elif 'birthdate' in data.columns and 'location' in data.columns and 'year' in data.columns:
+        cat = 'vk'
     for i, row in data.iterrows():
         if str(row['left']) != 'nan':
             p = doc.add_paragraph(f"{i}\t{row['left']}")
@@ -14,9 +18,14 @@ def docwrite(data, name):
         p.add_run(f" {row['result']} ").bold = True
         if str(row['right']) != 'nan':
             p.add_run(str(row['right']))
-        doc.add_paragraph(f"Дата создания текста: {row['year']}")
-        doc.add_paragraph(f"Год рождения автора: {row['birth']}")
-        doc.add_paragraph(f"Место жительства автора: {row['loc']}")
+        if cat == 'lj':
+            doc.add_paragraph(f"Дата создания текста: {row['year']}")
+            doc.add_paragraph(f"Год рождения автора: {row['birth']}")
+            doc.add_paragraph(f"Место жительства автора: {row['loc']}")
+        elif cat == 'vk':
+            doc.add_paragraph(f"Дата создания текста: {row['year']}")
+            doc.add_paragraph(f"Год рождения автора: {row['birthdate']}")
+            doc.add_paragraph(f"Место жительства автора: {row['location']}")       
         doc.add_paragraph(' ')
     doc.save(f'docs/{name}.docx')
 
